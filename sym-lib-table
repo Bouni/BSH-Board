@@ -7,4 +7,6 @@
   (lib (name "TXS0102DQER")(type "KiCad")(uri "${KIPRJMOD}/symbols/TXS0102DQER.kicad_sym")(options "")(descr ""))
   (lib (name "Connector_Wurth_WR-RAST")(type "KiCad")(uri "${KIPRJMOD}/symbols/Connector_Wurth_WR-RAST.kicad_sym")(options "")(descr ""))
   (lib (name "AP63203WU-7")(type "KiCad")(uri "${KIPRJMOD}/symbols/AP63203WU-7.kicad_sym")(options "")(descr ""))
+  (lib (name "XC6206P332MR")(type "KiCad")(uri "${KIPRJMOD}/symbols/XC6206P332MR.kicad_sym")(options "")(descr ""))
+  (lib (name "TPS7A2050PDQNR")(type "KiCad")(uri "${KIPRJMOD}/symbols/TPS7A2050PDQNR.kicad_sym")(options "")(descr ""))
 )
