@@ -499,7 +499,11 @@
     "meta": {
       "version": 4
     },
-    "net_colors": null,
+    "net_colors": {
+      "+3.3V": "rgb(255, 228, 44)",
+      "+5V": "rgb(255, 158, 29)",
+      "VCC": "rgb(255, 7, 11)"
+    },
     "netclass_assignments": null,
     "netclass_patterns": []
   },
@@ -544,7 +548,7 @@
           "group_by": false,
           "label": "Qty",
           "name": "${QUANTITY}",
-          "show": true
+          "show": false
         },
         {
           "group_by": true,
@@ -556,19 +560,19 @@
           "group_by": true,
           "label": "DNP",
           "name": "${DNP}",
-          "show": true
+          "show": false
         },
         {
           "group_by": true,
           "label": "Exclude from BOM",
           "name": "${EXCLUDE_FROM_BOM}",
-          "show": true
+          "show": false
         },
         {
           "group_by": true,
           "label": "Exclude from Board",
           "name": "${EXCLUDE_FROM_BOARD}",
-          "show": true
+          "show": false
         },
         {
           "group_by": true,
@@ -580,7 +584,7 @@
           "group_by": false,
           "label": "Datasheet",
           "name": "Datasheet",
-          "show": true
+          "show": false
         },
         {
           "group_by": false,
@@ -613,7 +617,7 @@
           "show": false
         },
         {
-          "group_by": false,
+          "group_by": true,
           "label": "LCSC",
           "name": "LCSC",
           "show": true
@@ -734,20 +738,8 @@
         },
         {
           "group_by": false,
-          "label": "MF",
-          "name": "MF",
-          "show": false
-        },
-        {
-          "group_by": false,
           "label": "Price",
           "name": "Price",
-          "show": false
-        },
-        {
-          "group_by": false,
-          "label": "MP",
-          "name": "MP",
           "show": false
         },
         {
@@ -766,12 +758,6 @@
           "group_by": false,
           "label": "SnapEDA_Link",
           "name": "SnapEDA_Link",
-          "show": false
-        },
-        {
-          "group_by": false,
-          "label": "MPN",
-          "name": "MPN",
           "show": false
         },
         {
@@ -796,6 +782,12 @@
           "group_by": false,
           "label": "Manufacturer_Part_Number",
           "name": "Manufacturer_Part_Number",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Function",
+          "name": "Function",
           "show": false
         }
       ],
