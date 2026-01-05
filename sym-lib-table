@@ -9,4 +9,6 @@
   (lib (name "AP63203WU-7")(type "KiCad")(uri "${KIPRJMOD}/symbols/AP63203WU-7.kicad_sym")(options "")(descr ""))
   (lib (name "XC6206P332MR")(type "KiCad")(uri "${KIPRJMOD}/symbols/XC6206P332MR.kicad_sym")(options "")(descr ""))
   (lib (name "TPS7A2050PDQNR")(type "KiCad")(uri "${KIPRJMOD}/symbols/TPS7A2050PDQNR.kicad_sym")(options "")(descr ""))
+  (lib (name "ESP32-C6-MINI-1-N4")(type "KiCad")(uri "${KIPRJMOD}/symbols/ESP32-C6-MINI-1-N4.kicad_sym")(options "")(descr ""))
+  (lib (name "NCP715SQ50T2G")(type "KiCad")(uri "${KIPRJMOD}/symbols/NCP715SQ50T2G.kicad_sym")(options "")(descr ""))
 )

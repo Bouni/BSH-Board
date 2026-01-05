@@ -1,4 +1,4 @@
-26486869420706523
+26493939380649960
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -105245,12 +105245,33 @@ SMT Housing
 6
 6
 footprints
+MICRO-USB-SMD_MICRO-QTZB5.0
+MICRO-USB-SMD_MICRO-QTZB5.0 footprint
+MICRO-USB-SMD_MICRO-QTZB5.0 footprint C2681556
+0
+9
+6
+footprints
 QFN-7_L4.0-W3.3_TPSM863257RDXR
 QFN-7_L4.0-W3.3_TPSM863257RDXR footprint
 QFN-7_L4.0-W3.3_TPSM863257RDXR footprint C19190416
 0
 7
 7
+footprints
+SW-SMD_L3.0-W2.5-P3.40-LS4.0-L
+SW-SMD_L3.0-W2.5-P3.40-LS4.0-L footprint
+SW-SMD_L3.0-W2.5-P3.40-LS4.0-L footprint C2689695
+0
+2
+2
+footprints
+TSOT-26_L2.9-W1.6-P0.95-LS2.8-BL
+TSOT-26_L2.9-W1.6-P0.95-LS2.8-BL footprint
+TSOT-26_L2.9-W1.6-P0.95-LS2.8-BL footprint C780769
+0
+6
+6
 footprints
 WAGO_2060-453
 CONN-SMD_2060-453 footprint
@@ -105279,3 +105300,10 @@ X2SON-8_L1.4-W1.0-P0.35-BL footprint C2652935
 0
 8
 8
+footprints
+XCVR_ESP32-C6-MINI-1-N4
+
+
+0
+61
+61
