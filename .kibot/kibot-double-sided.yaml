@@ -124,6 +124,6 @@ outputs:
 
 - name: "Step file"
   comment: "@NAME@  Step file"
-  type: step
+  type: export_3d
   options:
     output: "@NAME@-%r.step"

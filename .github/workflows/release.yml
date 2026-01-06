@@ -14,12 +14,15 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       RELEASE_ID: ${{ steps.create_release.outputs.RELEASE_ID }}
+
     steps:
+
     - name: Checkout code
       uses: actions/checkout@v3
       with:
         token: ${{ secrets.TOKEN }}
         fetch-depth: 0 # Needed for tagging
+
     - name: Load metadata from metadata.env file
       id: metadata
       run: |
@@ -28,12 +31,14 @@ jobs:
         set +a
         echo "NAME=$NAME" >> $GITHUB_OUTPUT
         echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+
     - name: Install jq
       id: install_jq
       run: |
         if ! command -v jq &> /dev/null; then
           apt-get update && apt-get install -y jq
         fi
+
     - name: Detect release type
       id: version
       run: |
@@ -49,6 +54,7 @@ jobs:
           echo "PRERELEASE=false" >> $GITHUB_OUTPUT
           echo "Detected STABLE RELEASE: ${{ steps.metadata.outputs.VERSION }}"
         fi
+
     - name: Check if tag exists
       id: check_tag
       run: |
@@ -59,6 +65,7 @@ jobs:
         else
           echo "exists=false" >> $GITHUB_OUTPUT
         fi
+
     - name: Update README
       if: steps.check_tag.outputs.exists == 'false'
       run: |
@@ -73,6 +80,7 @@ jobs:
           # Add pre-release warning to README
           sed -i '1i\> **⚠️ This is a pre-release version. Use with caution!**' README.md
         fi
+
     - name: Commit README changes
       if: steps.check_tag.outputs.exists == 'false'
       run: |
@@ -84,12 +92,14 @@ jobs:
         else
           git commit -m "Update README for release ${{ steps.metadata.outputs.VERSION  }}" || echo "No changes to commit"
         fi
+
     - name: Create tag
       if: steps.check_tag.outputs.exists == 'false'
       run: |
         git tag "${{ steps.metadata.outputs.VERSION  }}"
         git push origin main
         git push origin "${{ steps.metadata.outputs.VERSION  }}"
+
     - name: Create release
       id: create_release
       if: steps.check_tag.outputs.exists == 'false'
@@ -98,11 +108,17 @@ jobs:
           RELEASE_NAME="🚧 Pre-release ${{ steps.metadata.outputs.VERSION }}"
           RELEASE_BODY="Pre-release ${{ steps.metadata.outputs.VERSION }} - This is a pre-release version. \
           It may contain bugs and is not recommended for production use. Use with caution!\n\n\n \
-          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top-3D.png)"
+          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top-3D.png)" \
+          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom-3D.png)" \
+          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top.png)" \
+          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom.png)"
         else
           RELEASE_NAME="🚀 Release ${{ steps.metadata.outputs.VERSION }}"
           RELEASE_BODY="Release ${{ steps.metadata.outputs.VERSION }}\n\n\n \
-          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top-3D.png)"
+          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top-3D.png)" \
+          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom-3D.png)" \
+          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top.png)" \
+          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom.png)"
         fi
 
         # Simple JSON without complex escaping
@@ -117,6 +133,7 @@ jobs:
         echo "RELEASE_ID=$RELEASE_ID" >> $GITHUB_OUTPUT
 
         echo "Release created with ID: $RELEASE_ID"
+
     - name: Create Label for tag
       id: create_label
       if: steps.check_tag.outputs.exists == 'false'
