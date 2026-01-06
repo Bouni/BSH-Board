@@ -108,16 +108,16 @@ jobs:
           RELEASE_NAME="🚧 Pre-release ${{ steps.metadata.outputs.VERSION }}"
           RELEASE_BODY="Pre-release ${{ steps.metadata.outputs.VERSION }} - This is a pre-release version. \
           It may contain bugs and is not recommended for production use. Use with caution!\n\n\n \
-          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top-3D.png)" \
-          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom-3D.png)" \
-          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top.png)" \
+          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top-3D.png) \
+          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom-3D.png) \
+          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top.png) \
           ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom.png)"
         else
           RELEASE_NAME="🚀 Release ${{ steps.metadata.outputs.VERSION }}"
           RELEASE_BODY="Release ${{ steps.metadata.outputs.VERSION }}\n\n\n \
-          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top-3D.png)" \
-          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom-3D.png)" \
-          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top.png)" \
+          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top-3D.png) \
+          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom-3D.png) \
+          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top.png) \
           ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom.png)"
         fi
 
