@@ -257,13 +257,13 @@
 	(embedded_fonts no)
 	(model "MICRO-USB-SMD_MICRO-QTZB5.0.step"
 		(offset
-			(xyz 0 -0.9729977854 -0.599998791)
+			(xyz 0 -0.972998 1.25)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz 0 0 0)
+			(xyz -0 -0 -0)
 		)
 	)
 )

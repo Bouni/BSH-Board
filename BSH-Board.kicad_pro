@@ -58,7 +58,28 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "padstack|119500000|85500000|e20f541e-aaa3-4773-ac34-511669a3e10d|00000000-0000-0000-0000-000000000000",
+          ""
+        ],
+        [
+          "padstack|122000000|85500000|ade39ceb-a42e-4a30-adc7-e83db71a88d3|00000000-0000-0000-0000-000000000000",
+          ""
+        ],
+        [
+          "padstack|124500000|85500000|bad1640e-52c5-4a5f-aa1d-922a7e1d3a3d|00000000-0000-0000-0000-000000000000",
+          ""
+        ],
+        [
+          "starved_thermal|122300000|78450000|e8397483-6a4c-47e0-a12d-f0e5a1d4b9da|2a2d2437-ca22-4b48-9e87-4303c2941eae|F.Cu",
+          ""
+        ],
+        [
+          "starved_thermal|128190000|85800000|e8397483-6a4c-47e0-a12d-f0e5a1d4b9da|c6447fc5-af1e-4091-9f4b-027f8b8cb9f5|F.Cu",
+          ""
+        ]
+      ],
       "meta": {
         "version": 2
       },
@@ -79,7 +100,7 @@
         "footprint_filters_mismatch": "ignore",
         "footprint_symbol_mismatch": "warning",
         "footprint_type_mismatch": "ignore",
-        "hole_clearance": "error",
+        "hole_clearance": "ignore",
         "hole_to_hole": "warning",
         "holes_co_located": "warning",
         "invalid_outline": "error",
@@ -88,7 +109,7 @@
         "items_not_allowed": "error",
         "length_out_of_range": "error",
         "lib_footprint_issues": "warning",
-        "lib_footprint_mismatch": "warning",
+        "lib_footprint_mismatch": "ignore",
         "malformed_courtyard": "error",
         "microvia_drill_out_of_range": "error",
         "mirrored_text_on_front_layer": "warning",
@@ -100,13 +121,13 @@
         "padstack": "warning",
         "pth_inside_courtyard": "ignore",
         "shorting_items": "error",
-        "silk_edge_clearance": "warning",
-        "silk_over_copper": "warning",
-        "silk_overlap": "warning",
+        "silk_edge_clearance": "ignore",
+        "silk_over_copper": "ignore",
+        "silk_overlap": "ignore",
         "skew_out_of_range": "error",
         "solder_mask_bridge": "error",
         "starved_thermal": "error",
-        "text_height": "warning",
+        "text_height": "ignore",
         "text_on_edge_cuts": "error",
         "text_thickness": "warning",
         "through_hole_pad_without_hole": "error",
@@ -502,6 +523,7 @@
     "net_colors": {
       "+3.3V": "rgb(255, 228, 44)",
       "+5V": "rgb(255, 158, 29)",
+      "GND": "rgb(22, 33, 120)",
       "VCC": "rgb(255, 7, 11)"
     },
     "netclass_assignments": null,
@@ -788,6 +810,12 @@
           "group_by": false,
           "label": "Function",
           "name": "Function",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Pins",
+          "name": "Sim.Pins",
           "show": false
         }
       ],

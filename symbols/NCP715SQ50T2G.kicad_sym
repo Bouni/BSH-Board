@@ -6,8 +6,8 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" "U"
-			(at -6.858 7.874 0)
+		(property "Reference" "U3"
+			(at -1.27 10.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15,14 +15,14 @@
 			)
 		)
 		(property "Value" "NCP715SQ50T2G"
-			(at 0.508 6.096 0)
+			(at -1.27 7.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "footprint:SC-88A_L2.0-W1.3-P0.65-LS2.1-BL"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-353_SC-70-5"
 			(at 0 -10.16 0)
 			(effects
 				(font
