@@ -89,38 +89,38 @@ outputs:
     format: png
     bottom: true
 
-- name: "3D Blender top image"
-  comment: "@NAME@ 3D render from top (High Quality)"
-  type: blender_export
-  options:
-    render_options:
-      background1: "#8FBCF7FF"
-      background2: "#0B1E35FF"
-      samples: 20
-      resolution_y: 1440
-      resolution_x: 2560
-    point_of_view:
-      rotate_x: -5
-    outputs:
-    - type: render
-      output: "@NAME@-%r-Top-3D.png"
+# - name: "3D Blender top image"
+#   comment: "@NAME@ 3D render from top (High Quality)"
+#   type: blender_export
+#   options:
+#     render_options:
+#       background1: "#8FBCF7FF"
+#       background2: "#0B1E35FF"
+#       samples: 20
+#       resolution_y: 1440
+#       resolution_x: 2560
+#     point_of_view:
+#       rotate_x: -5
+#     outputs:
+#     - type: render
+#       output: "@NAME@-%r-Top-3D.png"
 
-- name: "3D Blender bootom image"
-  comment: "@NAME@ 3D render from bottom (High Quality)"
-  type: blender_export
-  options:
-    render_options:
-      background1: "#8FBCF7FF"
-      background2: "#0B1E35FF"
-      samples: 20
-      resolution_y: 1440
-      resolution_x: 2560
-    point_of_view:
-      rotate_x: 5
-      rotate_y: 180
-    outputs:
-    - type: render
-      output: "@NAME@-%r-Bottom-3D.png"
+# - name: "3D Blender bootom image"
+#   comment: "@NAME@ 3D render from bottom (High Quality)"
+#   type: blender_export
+#   options:
+#     render_options:
+#       background1: "#8FBCF7FF"
+#       background2: "#0B1E35FF"
+#       samples: 20
+#       resolution_y: 1440
+#       resolution_x: 2560
+#     point_of_view:
+#       rotate_x: 5
+#       rotate_y: 180
+#     outputs:
+#     - type: render
+#       output: "@NAME@-%r-Bottom-3D.png"
 
 - name: "Step file"
   comment: "@NAME@  Step file"
