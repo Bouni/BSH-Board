@@ -1,0 +1,131 @@
+---
+kibot:
+  version: 1
+
+global:
+  output: "@LONG_NAME@-%r-%i.%x"
+  field_lcsc_part: LCSC
+
+import:
+  - file: JLCPCB
+    definitions:
+      _KIBOT_POS_ONLY_SMD: false
+      
+outputs:
+
+  - name: 'Gerber'
+    comment: 'Gerber files'
+    type: 'gerber'
+    dir: 'gerber'
+    layers:
+      - "F.Cu"
+      - "B.Cu"
+      - "F.Mask"
+      - "B.Mask"
+      - "F.Silkscreen"
+      - "B.Silkscreen"
+      - "Edge.Cuts"
+    options:
+      output: "@LONG_NAME@-%r-Gerber-%i.%x"
+
+  - name: 'Excellon'
+    comment: 'Excellon drill files'
+    type: 'excellon'
+    dir: 'excellon'
+    options:
+      output: "@LONG_NAME@-%r-Drill.%x"
+
+  - name: 'Pick and Place'
+    comment: "Pick and Place file"
+    type: 'position'
+    dir: 'pick-and-place'
+    options:
+      output: "@LONG_NAME@-%r-PickAndPlace.%x"
+      format: "CSV"
+      separate_files_for_front_and_back: false
+
+  - name: 'BOM'
+    comment: "Bill of materials (XLSX)"
+    type: bom
+    options:
+      output: "@LONG_NAME@-%r-Stückliste.%x"
+      format: "XLSX"
+      columns:
+        - "Row"
+        - "References"
+        - "Value"
+        - "Footprint"
+        - "Quantity per PCB"
+        - "MPN"
+        - "Manufacturer_Name"
+      normalize_values: true
+      xlsx:
+        logo: false
+        title: "Stückliste @LONG_NAME@ %r"
+        hide_pcb_info: true
+        hide_stats_info: true
+        highlight_empty: false
+
+  - name: 'Schematic'
+    comment: "Print schematic (PDF)"
+    type: pdf_sch_print
+    options:
+      output: "@LONG_NAME@-%r-Schema.%x"
+
+  - name: 'PCB TOP image'
+    comment: "PNG of the top side of the PCB"
+    type: pcbdraw
+    options:
+      output: "@LONG_NAME@-%r-Oberseite.%x"
+      dpi: 1200
+      format: png
+
+  - name: 'PCB BOTTOM image'
+    comment: "PNG of the bottom side of the PCB"
+    type: pcbdraw
+    options:
+      output: "@LONG_NAME@-%r-Unterseite.%x"
+      dpi: 1200
+      format: png
+      bottom: true
+
+  - name: "3D Blender top image"
+    comment: "@LONG_NAME@ 3D render from top (High Quality)"
+    type: blender_export
+    options:
+      render_options:
+        background1: "#8FBCF7FF"
+        background2: "#0B1E35FF"  
+        samples: 20
+        resolution_y: 1440
+        resolution_x: 2560
+      point_of_view:
+        rotate_x: -5
+      outputs:
+        - type: render
+          output: "@LONG_NAME@-%r-Oberseite-3D.png"
+
+  - name: "3D Blender bootom image"
+    comment: "@LONG_NAME@ 3D render from bottom (High Quality)"
+    type: blender_export
+    options:
+      render_options:
+        background1: "#8FBCF7FF"
+        background2: "#0B1E35FF"  
+        samples: 20
+        resolution_y: 1440
+        resolution_x: 2560
+      point_of_view:
+        rotate_x: 5
+        rotate_y: 180
+      outputs:
+        - type: render
+          output: "@LONG_NAME@-%r-Unterseite-3D.png"
+
+  - name: "Step file"
+    comment: "@LONG_NAME@  Step file"
+    type: step
+    options:
+      output: "@LONG_NAME@-%r.step"
+
+
