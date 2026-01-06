@@ -209,8 +209,10 @@ jobs:
       id: zip
       run: |
         cd output
+        ls -la
         zip -r ../${{ steps.metadata.outputs.DATE }}-${{ steps.metadata.outputs.NAME }}-ProductionFiles-${{ steps.metadata.outputs.VERSION }}.zip . -x  "JLCPCB/*" -x "*.step" 
         cd ..
+        ls -la
         echo "PRODUCTION_FILES=${{ steps.metadata.outputs.DATE }}-${{ steps.metadata.outputs.NAME }}-ProductionFiles-${{ steps.metadata.outputs.VERSION }}.zip" >> $GITHUB_OUTPUT
         echo "STEP_FILE"=${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}.step >> $GITHUB_OUTPUT
         echo "JLCPCB_GERBER_FILES=$(find output/JLCPCB -maxdepth 1 -iname "*.zip" -type f)" >> $GITHUB_OUTPUT
