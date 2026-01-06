@@ -154,10 +154,6 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Install zip
-      run: |
-        sudo apt-get update && apt-get install -y zip tree
-
     - name: Load metadata from metadata.env file
       id: metadata
       run: |
@@ -185,7 +181,6 @@ jobs:
       id: zip
       run: |
         cd output
-        tree .
         zip -r ../${{ steps.metadata.outputs.DATE }}-${{ steps.metadata.outputs.NAME }}-ProductionFiles-${{ steps.metadata.outputs.VERSION }}.zip . -x  "JLCPCB/*" -x "*.step" 
         cd ..
         echo "PRODUCTION_FILES=${{ steps.metadata.outputs.DATE }}-${{ steps.metadata.outputs.NAME }}-ProductionFiles-${{ steps.metadata.outputs.VERSION }}.zip" >> $GITHUB_OUTPUT
