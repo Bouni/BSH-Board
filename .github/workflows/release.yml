@@ -17,7 +17,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.TOKEN }}
         fetch-depth: 0 # Needed for tagging
     - name: Load metadata from metadata.env file
       id: metadata
@@ -106,7 +106,7 @@ jobs:
 
         # Simple JSON without complex escaping
         RESPONSE=$(curl -X POST \
-          -H "Authorization: token ${{ secrets.github_TOKEN }}" \
+          -H "Authorization: token ${{ secrets.TOKEN }}" \
           -H "Content-Type: application/json" \
           -d "{\"tag_name\":\"${{ steps.metadata.outputs.VERSION }}\",\"name\":\"$RELEASE_NAME\",\"body\":\"$RELEASE_BODY\",\"draft\":false,\"prerelease\":${{ steps.version.outputs.PRERELEASE }}}" \
           "${{ github.api_url }}/repos/${{ github.repository }}/releases")
