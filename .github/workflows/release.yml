@@ -108,17 +108,17 @@ jobs:
           RELEASE_NAME="🚧 Pre-release ${{ steps.metadata.outputs.VERSION }}"
           RELEASE_BODY="Pre-release ${{ steps.metadata.outputs.VERSION }} - This is a pre-release version. \
           It may contain bugs and is not recommended for production use. Use with caution!\n\n\n \
-          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top-3D.png) \
-          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom-3D.png) \
-          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top.png) \
-          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom.png)"
+          <img width='400' alt='Top 3D' src='$BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top-3D.png' /> \
+          <img width='400' alt='Bottom 3D' src='$BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom-3D.png' /> \
+          <img width='400' alt='Top' src='$BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top.png' /> \
+          <img width='400' alt='Bottom' src='$BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom.png' />"
         else
           RELEASE_NAME="🚀 Release ${{ steps.metadata.outputs.VERSION }}"
           RELEASE_BODY="Release ${{ steps.metadata.outputs.VERSION }}\n\n\n \
-          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top-3D.png) \
-          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom-3D.png) \
-          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top.png) \
-          ![]($BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom.png)"
+          <img width='400' alt='Top 3D' src='$BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top-3D.png' /> \
+          <img width='400' alt='Bottom 3D' src='$BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom-3D.png' /> \
+          <img width='400' alt='Top' src='$BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top.png' /> \
+          <img width='400' alt='Bottom' src='$BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom.png' />"
         fi
 
         # Simple JSON without complex escaping
@@ -223,85 +223,83 @@ jobs:
       env:
         KIBOT_CONFIG: ${{ steps.metadata.outputs.KIBOT_CONFIG }}
       run: |
-        echo '${{ toJSON(steps.zip.outputs) }}' | jq '.'
+        curl -L \
+          -X POST \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          -H "Content-Type: application/octet-stream" \
+          "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ needs.release.outputs.RELEASE_ID }}/assets?name=${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top.png" \
+          --data-binary "@./output/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top.png"
 
-        # curl -L \
-        #   -X POST \
-        #   -H "Accept: application/vnd.github+json" \
-        #   -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
-        #   -H "X-GitHub-Api-Version: 2022-11-28" \
-        #   -H "Content-Type: application/octet-stream" \
-        #   "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ needs.release.outputs.RELEASE_ID }}/assets?name=${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top.png" \
-        #   --data-binary "@./output/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top.png"
+        curl -L \
+          -X POST \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          -H "Content-Type: application/octet-stream" \
+          "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ needs.release.outputs.RELEASE_ID }}/assets?name=${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top-3D.png" \
+          --data-binary "@./output/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top-3D.png"
 
-        # curl -L \
-        #   -X POST \
-        #   -H "Accept: application/vnd.github+json" \
-        #   -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
-        #   -H "X-GitHub-Api-Version: 2022-11-28" \
-        #   -H "Content-Type: application/octet-stream" \
-        #   "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ needs.release.outputs.RELEASE_ID }}/assets?name=${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top-3D.png" \
-        #   --data-binary "@./output/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top-3D.png"
+        curl -L \
+          -X POST \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          -H "Content-Type: application/octet-stream" \
+          "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ needs.release.outputs.RELEASE_ID }}/assets?name=${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom.png" \
+          --data-binary "@./output/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom.png"
 
-        # curl -L \
-        #   -X POST \
-        #   -H "Accept: application/vnd.github+json" \
-        #   -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
-        #   -H "X-GitHub-Api-Version: 2022-11-28" \
-        #   -H "Content-Type: application/octet-stream" \
-        #   "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ needs.release.outputs.RELEASE_ID }}/assets?name=${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom.png" \
-        #   --data-binary "@./output/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom.png"
+        curl -L \
+          -X POST \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          -H "Content-Type: application/octet-stream" \
+          "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ needs.release.outputs.RELEASE_ID }}/assets?name=${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom-3D.png" \
+          --data-binary "@./output/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom-3D.png"
 
-        # curl -L \
-        #   -X POST \
-        #   -H "Accept: application/vnd.github+json" \
-        #   -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
-        #   -H "X-GitHub-Api-Version: 2022-11-28" \
-        #   -H "Content-Type: application/octet-stream" \
-        #   "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ needs.release.outputs.RELEASE_ID }}/assets?name=${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom-3D.png" \
-        #   --data-binary "@./output/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom-3D.png"
+        curl -L \
+          -X POST \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          -H "Content-Type: application/octet-stream" \
+          "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ needs.release.outputs.RELEASE_ID }}/assets?name=${{ steps.zip.outputs.PRODUCTION_FILES }}" \
+          --data-binary "@./output/${{ steps.zip.outputs.PRODUCTION_FILES }}"
 
-        # curl -L \
-        #   -X POST \
-        #   -H "Accept: application/vnd.github+json" \
-        #   -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
-        #   -H "X-GitHub-Api-Version: 2022-11-28" \
-        #   -H "Content-Type: application/octet-stream" \
-        #   "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ needs.release.outputs.RELEASE_ID }}/assets?name=${{ steps.zip.outputs.PRODUCTION_FILES }}" \
-        #   --data-binary "@${{ steps.zip.outputs.PRODUCTION_FILES }}"
+        curl -L \
+          -X POST \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          -H "Content-Type: application/octet-stream" \
+          "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ needs.release.outputs.RELEASE_ID }}/assets?name=${{ steps.zip.outputs.STEP_FILE }}" \
+          --data-binary "@./output/${{ steps.zip.outputs.STEP_FILE }}"
 
-        # curl -L \
-        #   -X POST \
-        #   -H "Accept: application/vnd.github+json" \
-        #   -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
-        #   -H "X-GitHub-Api-Version: 2022-11-28" \
-        #   -H "Content-Type: application/octet-stream" \
-        #   "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ needs.release.outputs.RELEASE_ID }}/assets?name=${{ steps.zip.outputs.STEP_FILE }}" \
-        #   --data-binary "@${{ steps.zip.outputs.STEP_FILE }}"
+        curl -L \
+          -X POST \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          -H "Content-Type: application/octet-stream" \
+          "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ needs.release.outputs.RELEASE_ID }}/assets?name=JLCPCB-${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Gerber.zip" \
+          --data-binary "@./output/${{ steps.zip.outputs.JLCPCB_GERBER_FILES }}"
 
-        # curl -L \
-        #   -X POST \
-        #   -H "Accept: application/vnd.github+json" \
-        #   -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
-        #   -H "X-GitHub-Api-Version: 2022-11-28" \
-        #   -H "Content-Type: application/octet-stream" \
-        #   "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ needs.release.outputs.RELEASE_ID }}/assets?name=JLCPCB-${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Gerber.zip" \
-        #   --data-binary "@${{ steps.zip.outputs.JLCPCB_GERBER_FILES }}"
+        curl -L \
+          -X POST \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          -H "Content-Type: application/octet-stream" \
+          "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ needs.release.outputs.RELEASE_ID }}/assets?name=JLCPCB-${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-BOM.CSV" \
+          --data-binary "@./output/${{ steps.zip.outputs.JLCPCB_BOM_FILE }}"
 
-        # curl -L \
-        #   -X POST \
-        #   -H "Accept: application/vnd.github+json" \
-        #   -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
-        #   -H "X-GitHub-Api-Version: 2022-11-28" \
-        #   -H "Content-Type: application/octet-stream" \
-        #   "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ needs.release.outputs.RELEASE_ID }}/assets?name=JLCPCB-${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-BOM.CSV" \
-        #   --data-binary "@${{ steps.zip.outputs.JLCPCB_BOM_FILE }}"
-
-        # curl -L \
-        #   -X POST \
-        #   -H "Accept: application/vnd.github+json" \
-        #   -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
-        #   -H "X-GitHub-Api-Version: 2022-11-28" \
-        #   -H "Content-Type: application/octet-stream" \
-        #   "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ needs.release.outputs.RELEASE_ID }}/assets?name=JLCPCB-${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-CPL.CSV" \
-        #   --data-binary "@${{ steps.zip.outputs.JLCPCB_CPL_FILE }}"
+        curl -L \
+          -X POST \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          -H "Content-Type: application/octet-stream" \
+          "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ needs.release.outputs.RELEASE_ID }}/assets?name=JLCPCB-${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-CPL.CSV" \
+          --data-binary "@./output/${{ steps.zip.outputs.JLCPCB_CPL_FILE }}"
