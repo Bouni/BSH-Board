@@ -108,15 +108,15 @@ jobs:
           RELEASE_NAME="🚧 Pre-release ${{ steps.metadata.outputs.VERSION }}"
           RELEASE_BODY="Pre-release ${{ steps.metadata.outputs.VERSION }} - This is a pre-release version. \
           It may contain bugs and is not recommended for production use. Use with caution!\n\n\n \
-          <img width='400' alt='Top 3D' src='$BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top-3D.png' /> \
-          <img width='400' alt='Bottom 3D' src='$BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom-3D.png' /> \
+          <img width='800' alt='Top 3D' src='$BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top-3D.png' /> \
+          <img width='800' alt='Bottom 3D' src='$BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom-3D.png' /> \
           <img width='400' alt='Top' src='$BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top.png' /> \
           <img width='400' alt='Bottom' src='$BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom.png' />"
         else
           RELEASE_NAME="🚀 Release ${{ steps.metadata.outputs.VERSION }}"
           RELEASE_BODY="Release ${{ steps.metadata.outputs.VERSION }}\n\n\n \
-          <img width='400' alt='Top 3D' src='$BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top-3D.png' /> \
-          <img width='400' alt='Bottom 3D' src='$BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom-3D.png' /> \
+          <img width='800' alt='Top 3D' src='$BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top-3D.png' /> \
+          <img width='800' alt='Bottom 3D' src='$BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom-3D.png' /> \
           <img width='400' alt='Top' src='$BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Top.png' /> \
           <img width='400' alt='Bottom' src='$BASE_URL/${{ github.repository }}/releases/download/${{ steps.metadata.outputs.VERSION }}/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Bottom.png' />"
         fi
@@ -266,7 +266,7 @@ jobs:
           -H "X-GitHub-Api-Version: 2022-11-28" \
           -H "Content-Type: application/octet-stream" \
           "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ needs.release.outputs.RELEASE_ID }}/assets?name=${{ steps.zip.outputs.PRODUCTION_FILES }}" \
-          --data-binary "@./output/${{ steps.zip.outputs.PRODUCTION_FILES }}"
+          --data-binary "@${{ steps.zip.outputs.PRODUCTION_FILES }}"
 
         curl -L \
           -X POST \
@@ -275,7 +275,7 @@ jobs:
           -H "X-GitHub-Api-Version: 2022-11-28" \
           -H "Content-Type: application/octet-stream" \
           "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ needs.release.outputs.RELEASE_ID }}/assets?name=${{ steps.zip.outputs.STEP_FILE }}" \
-          --data-binary "@./output/${{ steps.zip.outputs.STEP_FILE }}"
+          --data-binary "@${{ steps.zip.outputs.STEP_FILE }}"
 
         curl -L \
           -X POST \
