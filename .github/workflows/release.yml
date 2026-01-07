@@ -223,7 +223,7 @@ jobs:
       env:
         KIBOT_CONFIG: ${{ steps.metadata.outputs.KIBOT_CONFIG }}
       run: |
-        echo ${{ steps.zip.outputs }}
+        echo '${{ toJSON(steps.metadata.outputs) }}' | jq '.'
 
         # curl -L \
         #   -X POST \
