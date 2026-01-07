@@ -9239,6 +9239,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C2500"
+			(at 96.52 41.91 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "248fec8a-2ae3-4382-96c8-395764ef58e1")
 		)
@@ -9263,7 +9272,7 @@
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "a9ba3f63-e666-4f81-ae4d-f6acfa55a91f")
@@ -10973,7 +10982,7 @@
 				)
 			)
 		)
-		(property "Value" "680"
+		(property "Value" "510"
 			(at 59.182 156.21 90)
 			(effects
 				(font
@@ -11008,7 +11017,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C25079"
+		(property "LCSC" "C25123"
 			(at 57.15 156.21 90)
 			(effects
 				(font
@@ -11425,7 +11434,7 @@
 				)
 			)
 		)
-		(property "Value" "680"
+		(property "Value" "510"
 			(at 71.882 156.21 90)
 			(effects
 				(font
@@ -11460,7 +11469,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C25079"
+		(property "LCSC" "C25123"
 			(at 69.85 156.21 90)
 			(effects
 				(font
