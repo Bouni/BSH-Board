@@ -159,8 +159,8 @@ jobs:
         cp output/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}*.png ./artifacts
         cp output/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}*.pdf ./artifacts/
         cp output/JLCPCB/*.zip ./artifacts/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-Gerber.zip
-        cp output/JLCPCB/*bom* ./artifacts/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-BOM.CSV
-        cp output/JLCPCB/*cpl* ./artifacts/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-CPL.CSV
+        cp output/JLCPCB/*bom* ./artifacts/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-BOM.csv
+        cp output/JLCPCB/*cpl* ./artifacts/${{ steps.metadata.outputs.NAME }}-${{ steps.metadata.outputs.VERSION }}-CPL.csv
         tree artifacts
 
     - name: Upload Release artifacts

@@ -12,59 +12,69 @@ import:
     _KIBOT_POS_ONLY_SMD: false
 
 outputs:
+  - name: 'JLCPCB_position'
+    type: custom
+    definition: JLCPCB
+    dir: JLCPCB
+    mods:
+      - name: JLCPCB_position 
+        corrections:
+          - designator: ^U2$
+            rotation: 0
+          - designator: ^U3$
+            rotation: 180
+# - name: 'Gerber'
+#   comment: 'Gerber files'
+#   type: 'gerber'
+#   dir: 'gerber'
+#   layers:
+#   - "F.Cu"
+#   - "B.Cu"
+#   - "F.Mask"
+#   - "B.Mask"
+#   - "F.Silkscreen"
+#   - "B.Silkscreen"
+#   - "Edge.Cuts"
+#   options:
+#     output: "@NAME@-%r-Gerber-%i.%x"
 
-- name: 'Gerber'
-  comment: 'Gerber files'
-  type: 'gerber'
-  dir: 'gerber'
-  layers:
-  - "F.Cu"
-  - "B.Cu"
-  - "F.Mask"
-  - "B.Mask"
-  - "F.Silkscreen"
-  - "B.Silkscreen"
-  - "Edge.Cuts"
-  options:
-    output: "@NAME@-%r-Gerber-%i.%x"
+# - name: 'Excellon'
+#   comment: 'Excellon drill files'
+#   type: 'excellon'
+#   dir: 'excellon'
+#   options:
+#     output: "@NAME@-%r-Drill.%x"
 
-- name: 'Excellon'
-  comment: 'Excellon drill files'
-  type: 'excellon'
-  dir: 'excellon'
-  options:
-    output: "@NAME@-%r-Drill.%x"
+# - name: 'Pick and Place'
+#   comment: "Pick and Place file"
+#   type: 'position'
+#   dir: 'pick-and-place'
+#   options:
+#     output: "@NAME@-%r-PickAndPlace.%x"
+#     format: "CSV"
+#     separate_files_for_front_and_back: false
 
-- name: 'Pick and Place'
-  comment: "Pick and Place file"
-  type: 'position'
-  dir: 'pick-and-place'
-  options:
-    output: "@NAME@-%r-PickAndPlace.%x"
-    format: "CSV"
-    separate_files_for_front_and_back: false
-
-- name: 'BOM'
-  comment: "Bill of materials (XLSX)"
-  type: bom
-  options:
-    output: "@NAME@-%r-BOM.%x"
-    format: "XLSX"
-    columns:
-    - "Row"
-    - "References"
-    - "Value"
-    - "Footprint"
-    - "Quantity per PCB"
-    - "MPN"
-    - "Manufacturer_Name"
-    normalize_values: true
-    xlsx:
-      logo: false
-      title: "BOM @NAME@ %r"
-      hide_pcb_info: true
-      hide_stats_info: true
-      highlight_empty: false
+# - name: 'BOM'
+#   comment: "Bill of materials (XLSX)"
+#   type: bom
+#   options:
+#     output: "@NAME@-%r-BOM.%x"
+#     format: "XLSX"
+#     columns:
+#     - "Row"
+#     - "References"
+#     - "Value"
+#     - "Footprint"
+#     - "Quantity per PCB"
+#     - "MPN"
+#     - "Manufacturer_Name"
+#     normalize_values: true
+#     xlsx:
+#       logo: false
+#       title: "BOM @NAME@ %r"
+#       hide_pcb_info: true
+#       hide_stats_info: true
+#       highlight_empty: false
 
 - name: 'Schematic'
   comment: "Print schematic (PDF)"

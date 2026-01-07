@@ -7525,7 +7525,7 @@
 		(path "/a9ba3f63-e666-4f81-ae4d-f6acfa55a91f")
 		(sheetname "/")
 		(sheetfile "BSH-Board.kicad_sch")
-		(attr smd exclude_from_bom)
+		(attr smd exclude_from_pos_files exclude_from_bom)
 		(fp_line
 			(start -5.11 -2.11)
 			(end -5.11 2.88)
