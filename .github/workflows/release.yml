@@ -223,7 +223,8 @@ jobs:
       env:
         KIBOT_CONFIG: ${{ steps.metadata.outputs.KIBOT_CONFIG }}
       run: |
-        for file in ./artifacts/*; do
+        cd artifacts
+        for file in *; do
           if [ -f "$file" ]; then
             echo "Uploading: $file"
             curl -L \
