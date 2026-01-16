@@ -10423,7 +10423,7 @@
 				)
 			)
 		)
-		(property "Value" "330"
+		(property "Value" "510"
 			(at 46.482 156.21 90)
 			(effects
 				(font
@@ -10458,7 +10458,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C25104"
+		(property "LCSC" "C25123"
 			(at 44.45 156.21 90)
 			(effects
 				(font
@@ -12043,7 +12043,7 @@
 				)
 			)
 		)
-		(property "Value" "330"
+		(property "Value" "510"
 			(at 85.852 156.21 90)
 			(effects
 				(font
@@ -12078,7 +12078,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C25104"
+		(property "LCSC" "C25123"
 			(at 83.82 156.21 90)
 			(effects
 				(font
