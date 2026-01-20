@@ -1,4 +1,4 @@
-26493940098488506
+26486873538546157
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -103613,6 +103613,13 @@ test point THT pad
 0
 1
 1
+Testpoints
+TestPoint_Pad_D1.0mm
+SMD pad as test Point, diameter 1.0mm
+test point SMD pad
+0
+1
+1
 Transformer_SMD
 Pulse_P0926NL
 SMT Gate Drive Transformer, 1:1:1, 8.0x6.3x5.3mm (https://productfinder.pulseeng.com/products/datasheets/SPM2007_61.pdf)
@@ -105252,47 +105259,12 @@ MICRO-USB-SMD_MICRO-QTZB5.0 footprint C2681556
 9
 6
 footprints
-QFN-7_L4.0-W3.3_TPSM863257RDXR
-QFN-7_L4.0-W3.3_TPSM863257RDXR footprint
-QFN-7_L4.0-W3.3_TPSM863257RDXR footprint C19190416
-0
-7
-7
-footprints
 SW-SMD_L3.0-W2.5-P3.40-LS4.0-L
 SW-SMD_L3.0-W2.5-P3.40-LS4.0-L footprint
 SW-SMD_L3.0-W2.5-P3.40-LS4.0-L footprint C2689695
 0
 2
 2
-footprints
-TSOT-26_L2.9-W1.6-P0.95-LS2.8-BL
-TSOT-26_L2.9-W1.6-P0.95-LS2.8-BL footprint
-TSOT-26_L2.9-W1.6-P0.95-LS2.8-BL footprint C780769
-0
-6
-6
-footprints
-WAGO_2060-453
-CONN-SMD_2060-453 footprint
-CONN-SMD_2060-453 footprint C2765056
-0
-6
-3
-footprints
-WEMOS_S2_mini
-32-pin module, https://www.wemos.cc/en/latest/s2/s2_mini.html
-ESP32-S2FN4R2 WiFi microcontroller
-0
-32
-32
-footprints
-WIFI-SMD_ESP32-MINI-1-N4
-WIFI-SMD_ESP32-MINI-1-N4 footprint
-WIFI-SMD_ESP32-MINI-1-N4 footprint C3013906
-0
-73
-65
 footprints
 X2SON-8_L1.4-W1.0-P0.35-BL
 X2SON-8_L1.4-W1.0-P0.35-BL footprint
