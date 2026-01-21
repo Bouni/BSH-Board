@@ -25,34 +25,28 @@
 #
 #
 
-# !! Specifics for WME14E3A0 !!
-#  This washing machine sends relatively sparse updates for the remaining time. 
-# Therefore a little bit of home assistant template magic is needed: 
-# 
-# creating a new template sensor with the following template gives you the remaining time of the washing machine
-# {{(timedelta(minutes=int(states.sensor.waschmaschine_dbus_restzeit.state))+states.sensor.waschmaschine_dbus_restzeit.last_updated) - now()}}
+# ==============================================================
 #
+# This is still not verified to work with a WME14E3A0 !
 #
-#
+# ==============================================================
+
 
 esphome:
   name: waschmaschine-dbus
   friendly_name: waschmaschine dbus
-  on_boot:
-    priority: 800
-    then:
-      - output.turn_on: level_shifter_oe
-
+ 
 external_components:
   - source: github://hn/bsh-home-appliances@master
 
 esp32:
-  board: esp32-c6-devkitc-1  # or esp32-c6-devkitm-1 depending on your board
+  board: esp32-c6-devkitc-1  
   variant: esp32c6
   framework:
     type: esp-idf
-
+    
 logger:
+  level: DEBUG
 
 api:
   # encryption:
@@ -60,30 +54,47 @@ api:
 
 ota:
   - platform: esphome
-    password: ""
 
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
-  # Dirty workaround because the machine's power supply unit cannot provide enough current:
-  #output_power: 10.5dB
 
-  # Enable fallback hotspot (captive portal) in case wifi connection fails
+web_server:
+  port: 80
+  version: 2
+  local: true
 
-# Level shifter control
 output:
   - platform: gpio
-    pin: GPIO0
-    id: level_shifter_oe
+    pin: 
+      number: GPIO07
+      inverted: true
+    id: activity_led
 
 uart:
   id: dbus_uart
   rx_pin: GPIO4
   tx_pin: GPIO5
   baud_rate: 9600
+  debug:
+    direction: BOTH
+    dummy_receiver: false
+    after:
+      # Trigger after 1 byte to ensure the LED blinks immediately
+      bytes: 1
+    sequence:
+      - output.turn_on: activity_led
+      - delay: 20ms
+      - output.turn_off: activity_led
 
 bshdbus:
   uart_id: dbus_uart
+
+status_led:
+  pin:
+    number: GPIO06
+    inverted: true
+
 
 binary_sensor:
   - platform: bshdbus
