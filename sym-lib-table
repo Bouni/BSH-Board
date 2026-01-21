@@ -5,4 +5,5 @@
   (lib (name "Connector_Wurth_WR-RAST")(type "KiCad")(uri "${KIPRJMOD}/symbols/Connector_Wurth_WR-RAST.kicad_sym")(options "")(descr ""))
   (lib (name "NCP715SQ50T2G")(type "KiCad")(uri "${KIPRJMOD}/symbols/NCP715SQ50T2G.kicad_sym")(options "")(descr ""))
   (lib (name "ESP32-C6-MINI-1-N4")(type "KiCad")(uri "${KIPRJMOD}/symbols/ESP32-C6-MINI-1-N4.kicad_sym")(options "")(descr ""))
+  (lib (name "LSF0102DQER")(type "KiCad")(uri "${KIPRJMOD}/symbols/LSF0102DQER.kicad_sym")(options "")(descr ""))
 )
