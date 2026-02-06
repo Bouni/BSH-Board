@@ -7,7 +7,7 @@
 	(title_block
 		(title "BSH Board")
 		(date "2026-01-16")
-		(rev "1.0-RC2")
+		(rev "1.0")
 		(company "Bouni")
 	)
 	(lib_symbols
