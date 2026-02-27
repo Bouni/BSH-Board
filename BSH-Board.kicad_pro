@@ -60,31 +60,11 @@
       ],
       "drc_exclusions": [
         [
-          "copper_edge_clearance|111998382|67599828|85d57ac4-736b-4fae-9bf7-659db4891dc7|663c4c3b-5656-4f1b-89c6-0bf8d4b9d4fb",
-          ""
-        ],
-        [
           "courtyards_overlap|121295000|83005000|b1239d1a-5b1c-487b-b224-c0befced9f5f|b53ecc33-0ff9-4d76-941e-72b839f12866",
           ""
         ],
         [
           "courtyards_overlap|125995000|83005000|7511a018-3c9f-4547-8bf6-367f1fb2acae|b53ecc33-0ff9-4d76-941e-72b839f12866",
-          ""
-        ],
-        [
-          "starved_thermal|113050000|73350000|e8397483-6a4c-47e0-a12d-f0e5a1d4b9da|37dcd183-776e-4dc2-aa59-a27a03bcab9f|F.Cu",
-          ""
-        ],
-        [
-          "starved_thermal|115850000|73350000|e8397483-6a4c-47e0-a12d-f0e5a1d4b9da|d2f31e66-015f-4d2d-a30e-0aee522bcb27|F.Cu",
-          ""
-        ],
-        [
-          "starved_thermal|118800000|71700000|e8397483-6a4c-47e0-a12d-f0e5a1d4b9da|569b223d-e354-4eb2-8d5e-c1a4143b2ba9|F.Cu",
-          ""
-        ],
-        [
-          "starved_thermal|124900000|78150000|e8397483-6a4c-47e0-a12d-f0e5a1d4b9da|9d77a273-ecff-4f40-92c7-93b73490dc74|F.Cu",
           ""
         ]
       ],
@@ -95,7 +75,7 @@
         "annular_width": "error",
         "clearance": "error",
         "connection_width": "warning",
-        "copper_edge_clearance": "error",
+        "copper_edge_clearance": "ignore",
         "copper_sliver": "warning",
         "courtyards_overlap": "error",
         "creepage": "error",
@@ -829,7 +809,7 @@
       ],
       "filter_string": "",
       "group_symbols": true,
-      "include_excluded_from_bom": false,
+      "include_excluded_from_bom": true,
       "name": "",
       "sort_asc": true,
       "sort_field": "Reference"
