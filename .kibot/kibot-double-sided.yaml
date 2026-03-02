@@ -29,7 +29,7 @@ outputs:
   - User.4
   options:
     layer_rename:
-      User.3: GKO
+      User.4: GKO
 - name: Schematic
   comment: Print schematic (PDF)
   type: pdf_sch_print
