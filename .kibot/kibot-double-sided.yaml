@@ -4,77 +4,84 @@ global:
   output: '@NAME@-%r-%i.%x'
   field_lcsc_part: LCSC
 filters:
-  - name: fix_rotation
-    comment: 'Adjust rotation for JLC'
-    type: rot_footprint
-    negative_bottom: false
-    mirror_bottom: true
-    rotations_and_offsets:
-      - field: Value
-        regex: NCP715SQ50T2G
-        angle: -90.0 # 270° + -90° = 180°
-      - field: Value
-        regex: AP63203WU
-        angle: -90.0 # 90° + -90° = 0°
+- name: fix_rotation
+  comment: 'Adjust rotation for JLC'
+  type: rot_footprint
+  negative_bottom: false
+  mirror_bottom: true
+  rotations_and_offsets:
+  - field: Value
+    regex: NCP715SQ50T2G
+    angle: -90 # 270° + -90° = 180°
+  - field: Value
+    regex: AP63203WU
+    angle: -90 # 90° + -90° = 0°
 import:
-  - file: JLCPCB
-    definitions:
-      _KIBOT_POS_ONLY_SMD: false
-      _KIBOT_POS_PRE_TRANSFORM: fix_rotation
+- file: JLCPCB
+  definitions:
+    _KIBOT_POS_ONLY_SMD: false
+    _KIBOT_POS_PRE_TRANSFORM: fix_rotation
 outputs:
-  - name: Schematic
-    comment: Print schematic (PDF)
-    type: pdf_sch_print
-    options:
-      output: '@NAME@-%r-Schematic.%x'
-  - name: PCB TOP image
-    comment: PNG of the top side of the PCB
-    type: pcbdraw
-    options:
-      output: '@NAME@-%r-Top.%x'
-      dpi: 1200
-      format: png
-  - name: PCB BOTTOM image
-    comment: PNG of the bottom side of the PCB
-    type: pcbdraw
-    options:
-      output: '@NAME@-%r-Bottom.%x'
-      dpi: 1200
-      format: png
-      bottom: true
-  - name: 3D Blender top image
-    comment: '@NAME@ 3D render from top (High Quality)'
-    type: blender_export
-    options:
-      render_options:
-        background1: '#8FBCF7FF'
-        background2: '#0B1E35FF'
-        samples: 20
-        resolution_y: 1440
-        resolution_x: 2560
-      point_of_view:
-        rotate_x: -5
-      outputs:
-        - type: render
-          output: '@NAME@-%r-Top-3D.png'
-  - name: 3D Blender bootom image
-    comment: '@NAME@ 3D render from bottom (High Quality)'
-    type: blender_export
-    options:
-      render_options:
-        background1: '#8FBCF7FF'
-        background2: '#0B1E35FF'
-        samples: 20
-        resolution_y: 1440
-        resolution_x: 2560
-      point_of_view:
-        rotate_x: 5
-        rotate_y: 180
-      outputs:
-        - type: render
-          output: '@NAME@-%r-Bottom-3D.png'
-  - name: Step file
-    comment: '@NAME@  Step file'
-    type: export_3d
-    options:
-      output: '@NAME@-%r.step'
+- name: 'JLCPCB_gerbers'
+  type: 'gerber'
+  extends: 'JLCPCB_gerbers'
+  layers:
+  - 'all'
+  - name: 'v-cuts'
+    suffix: 'v-cuts'
+- name: Schematic
+  comment: Print schematic (PDF)
+  type: pdf_sch_print
+  options:
+    output: '@NAME@-%r-Schematic.%x'
+- name: PCB TOP image
+  comment: PNG of the top side of the PCB
+  type: pcbdraw
+  options:
+    output: '@NAME@-%r-Top.%x'
+    dpi: 1200
+    format: png
+- name: PCB BOTTOM image
+  comment: PNG of the bottom side of the PCB
+  type: pcbdraw
+  options:
+    output: '@NAME@-%r-Bottom.%x'
+    dpi: 1200
+    format: png
+    bottom: true
+- name: 3D Blender top image
+  comment: '@NAME@ 3D render from top (High Quality)'
+  type: blender_export
+  options:
+    render_options:
+      background1: '#8FBCF7FF'
+      background2: '#0B1E35FF'
+      samples: 20
+      resolution_y: 1440
+      resolution_x: 2560
+    point_of_view:
+      rotate_x: -5
+    outputs:
+    - type: render
+      output: '@NAME@-%r-Top-3D.png'
+- name: 3D Blender bootom image
+  comment: '@NAME@ 3D render from bottom (High Quality)'
+  type: blender_export
+  options:
+    render_options:
+      background1: '#8FBCF7FF'
+      background2: '#0B1E35FF'
+      samples: 20
+      resolution_y: 1440
+      resolution_x: 2560
+    point_of_view:
+      rotate_x: 5
+      rotate_y: 180
+    outputs:
+    - type: render
+      output: '@NAME@-%r-Bottom-3D.png'
+- name: Step file
+  comment: '@NAME@  Step file'
+  type: export_3d
+  options:
+    output: '@NAME@-%r.step'
