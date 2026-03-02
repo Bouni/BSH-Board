@@ -11,8 +11,8 @@ filters:
   mirror_bottom: true
   rotations_and_offsets:
   - field: Value
-    regex: NCP715SQ50T2G
-    angle: -90 # 270° + -90° = 180°
+    regex: MMST3904
+    angle: -180 # 270° + -90° = 180°
   - field: Value
     regex: AP63203WU
     angle: -90 # 90° + -90° = 0°
@@ -21,15 +21,8 @@ import:
   definitions:
     _KIBOT_POS_ONLY_SMD: false
     _KIBOT_POS_PRE_TRANSFORM: fix_rotation
+    _KIBOT_GERBER_LAYERS: ["F.Cu", "B.Cu", "F.SilkS", "B.SilkS", "F.Mask", "B.Mask", "Edge.Cuts", {"layer":"User.4", "suffix":"V-Cuts"}]
 outputs:
-- name: gerbers
-  type: gerber
-  layers:
-  - all
-  - User.4
-  options:
-    layer_rename:
-      User.4: GKO
 - name: Schematic
   comment: Print schematic (PDF)
   type: pdf_sch_print

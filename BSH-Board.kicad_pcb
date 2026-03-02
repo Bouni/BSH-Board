@@ -639,6 +639,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C3293141"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ee211414-74b4-4e24-91f9-81ed138356ed")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "SW?DIP?x1*")
 		(path "/d635039b-e5c3-4fbd-8fce-c191eb02b6a4")
 		(sheetname "/")
