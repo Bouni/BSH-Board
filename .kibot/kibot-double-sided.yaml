@@ -22,13 +22,14 @@ import:
     _KIBOT_POS_ONLY_SMD: false
     _KIBOT_POS_PRE_TRANSFORM: fix_rotation
 outputs:
-- name: 'JLCPCB_gerbers'
-  type: 'gerber'
-  extends: 'JLCPCB_gerbers'
+- name: gerbers
+  type: gerber
   layers:
-  - 'all'
-  - name: 'v-cuts'
-    suffix: 'v-cuts'
+  - all
+  - User.4
+  options:
+    layer_rename:
+      User.3: GKO
 - name: Schematic
   comment: Print schematic (PDF)
   type: pdf_sch_print
