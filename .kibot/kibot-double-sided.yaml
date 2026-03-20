@@ -21,7 +21,6 @@ import:
   definitions:
     _KIBOT_POS_ONLY_SMD: false
     _KIBOT_POS_PRE_TRANSFORM: fix_rotation
-    _KIBOT_GERBER_LAYERS: ["F.Cu", "B.Cu", "F.SilkS", "B.SilkS", "F.Mask", "B.Mask", "Edge.Cuts", {"layer":"User.4", "suffix":"V-Cuts"}]
 outputs:
 - name: Schematic
   comment: Print schematic (PDF)

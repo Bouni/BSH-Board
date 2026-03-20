@@ -2,4 +2,5 @@
   (version 7)
   (lib (name "footprints")(type "KiCad")(uri "${KIPRJMOD}/footprints")(options "")(descr ""))
   (lib (name "Testpoints")(type "KiCad")(uri "${KIPRJMOD}/footprints/Testpoints.pretty")(options "")(descr ""))
+  (lib (name "Mousebites")(type "KiCad")(uri "${KIPRJMOD}/footprints/Mousebites.pretty")(options "")(descr ""))
 )
