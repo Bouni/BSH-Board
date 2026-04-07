@@ -1,5 +1,7 @@
 #!/bin/sh
 
+sudo rm -rf ./output/*
+
 docker run --rm -it \
   -v .:/board \
   -v .kibot/kibot-double-sided.yaml:/config.yaml \
